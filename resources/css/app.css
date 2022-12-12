@@ -1,0 +1,172 @@
+/* PAGINA.CSS */
+
+.articulo {
+    margin: 0 0 30px 0 !important;
+}
+
+.articulo>.titulo {
+    position: relative;
+    top: -2.8em;
+    padding-left: 1.6em;
+    padding-right: 4.54em;
+    display: inline-block;
+    background: #003d69;
+    background: -moz-linear-gradient(0deg, #003d69 59%, #101e2d 95%);
+    background: -webkit-linear-gradient(0deg, #003d69 59%, #101e2d 95%);
+    background: -o-linear-gradient(0deg, #003d69 59%, #101e2d 95%);
+    background: -ms-linear-gradient(0deg, #003d69 59%, #101e2d 95%);
+    background: linear-gradient(90deg, #003d69 59%, #101e2d 95%);
+    margin-bottom: -0.563em;
+}
+
+.articulo:before {
+    content: "";
+    height: 28px;
+    width: 92%;
+    max-width: 100%;
+    margin-left: 4.071em;
+    margin-top: 0.625em;
+    display: block;
+    background-color: #003d69;
+    background: -moz-linear-gradient(0deg, #101e2d 15%, #003d69 59%);
+    background: -webkit-linear-gradient(0deg, #101e2d 15%, #003d69 59%);
+    background: -o-linear-gradient(0deg, #101e2d 15%, #003d69 59%);
+    background: -ms-linear-gradient(0deg, #101e2d 15%, #003d69 59%);
+    background: linear-gradient(90deg, #101e2d 15%, #003d69 59%);
+    background-repeat: no-repeat;
+}
+
+.articulo>.titulo>h2, .articulo>.titulo>h2>a {
+    color: #FFFFFF;
+    font-size: 11pt;
+    margin: 0.49em 0em;
+}
+
+.dataTables_wrapper:after {
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+}
+
+/* DATATABLES.CSS */
+.dataTables_wrapper {
+    position: relative;
+    clear: both;
+    *zoom: 1;
+    zoom: 1;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #111;
+}
+
+table.dataTable, table.dataTable th, table.dataTable td {
+    box-sizing: content-box;
+}
+
+table.dataTable {
+    width: 100%;
+    margin: 0 auto;
+    clear: both;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+table.dataTable thead .sorting_asc {
+    background-image: url(DataTables-1.10.18/images/sort_asc.png);
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #E6E7E9;
+}
+
+.dataTables_wrapper:after {
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+}
+
+table:last-child {
+    margin-bottom: 25px;
+}
+
+table.dataTable.compact thead th, table.dataTable.compact thead td {
+    padding: 4px 17px 4px 4px;
+}
+
+
+#tabla-grupos-busqueda > thead > tr > th {
+    background: #003f6a;
+    color: white;
+}
+
+table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
+    cursor: pointer;
+    *cursor: hand;
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+#tabla-grupos-colciencias > thead > tr > th {
+    background: #003f6a;
+    color: white;
+}
+
+/* PREGRADOS.CSS */
+
+.dataTables_wrapper.no-footer thead tr th {
+    color: #FFF;
+    text-align: center;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    padding: 10px 18px;
+    border-bottom: 1px solid #111;
+}
+
+table.dataTable thead th, table.dataTable tfoot th {
+    font-weight: bold;
+}
+
+#tabla-grupos-facultades > thead > tr > th {
+    background: #003f6a;
+    color: white;
+}
+
+table.dataTable.row-border tbody tr:first-child th, table.dataTable.row-border tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td {
+    border-top: none;
+}
+
+table.dataTable.compact tbody th, table.dataTable.compact tbody td {
+    padding: 4px;
+}
+
+table.dataTable tbody tr {
+    background-color: #ffffff;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+table.dataTable tbody td {
+    padding: 8px 10px;
+}
+
+
+
+/* Menu lateral */
+
+ul.menu_lateral {
+    list-style: none;
+    padding: 0.5em 1em 0.5em 1em;
+    font-size: 14px;
+}
+
+main{
+    max-width: 1920px;
+}

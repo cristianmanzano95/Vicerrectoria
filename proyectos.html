@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS ONLY -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link type="text/css" href="/css/style.css" rel="stylesheet">
+    <link type="text/css" href="/css/cabecera.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link type="text/css" href="resources/css/app.css" rel="stylesheet">
+    <link type="text/css" href="resources/js/app.js" rel="stylesheet">
+    <title>Vicerrectoria</title>
+</head>
+<body>
+    <main class="row">
+        <div class="col-lg-3">
+            <ul class="menu_lateral">
+                <li class="menu-lateral-item accordion-item">
+                    <a target="_self" href="#" class="accordion-header accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-4">Información General
+                    </a>
+                    <ul class="accordion-collapse collapse" id="accordion-4">
+                        <li class="menu-lateral-item accordion-body">
+                            <a href="http://localhost:3000/apivicerrectoria/grupos.html">Grupos de Investigación
+                            </a>
+                        </li>
+                        <li class="menu-lateral-item accordion-body">
+                            <a href="http://localhost:3000/apivicerrectoria/semilleros.html">Semilleros de Investigación
+                            </a>
+                        </li>
+                        <li class="menu-lateral-item accordion-body">
+                            <a href="http://localhost:3000/apivicerrectoria/proyectos.html">Proyectos de Investigación
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class=" Contenenedor-principal col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="articulo">
+                <div class="titulo">
+                    <h2>Grupos</h2>
+                </div>
+                <!--Vista Principal de los Grupos 'investigaciones/grupos'-->
+                <br>
+                    <div id="tabla-grupos-busqueda_wrapper" class="dataTables_wrapper no-footer">
+                        <table id="tabla-grupos-busqueda" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                            <thead>
+                                <tr role="row">
+                                    <th rowspan="1" colspan="1">Búsqueda
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th style="background: rgb(255, 255, 255); width: 849px;" class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-busqueda" rowspan="1" colspan="1" aria-sort="ascending" aria-label="&amp;nbsp;: activate to sort column descending">&nbsp;
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr role="row" class="odd">
+                                    <td colspan="2" class="sorting_1">
+                                        <span class="help-block">Este filtro le permitirá realizar la búsqueda por Nombre o Director, objetivo o lineas de un Grupo de Investigación
+                                        </span>
+                                        <form action="" id="form-gs">
+                                            <div class="row">
+                                                <div class="col-lg-10">
+                                                    <select id="buscar-gs" class="buscar-gs selectized" tabindex="-1" style="display: none;">
+                                                        <option value="" selected="selected">
+                                                        </option>
+                                                    </select>
+                                                        <div class="selectize-control buscar-gs single">
+                                                            <div class="selectize-input items not-full has-options">
+                                                                <input type="text" autocomplete="off" tabindex="" id="buscar-gs-selectized" placeholder="Digite su criterio de busqueda" style="width: 189px;">
+                                                            </div>
+                                                                <div class="selectize-dropdown single buscar-gs" style="display: none;">
+                                                                    <div class="selectize-dropdown-content">
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <button type="button" class="btn btn-default btn-primary" id="btn-buscar-gs">Buscar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                <br>
+
+                <div id="tabla-grupos-facultades_wrapper" class="dataTables_wrapper no-footer">
+                    <table id="tabla-grupos-facultades" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-facultades" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Facultades: activate to sort column descending" style="width: 632px;">Facultades
+                                </th>
+                                <th style="text-align: center; width: 197px;" class="sorting" tabindex="0" aria-controls="tabla-grupos-facultades" rowspan="1" colspan="1" aria-label="Número de Grupos: activate to sort column ascending">Número de Proyectos
+                                </th>
+                            </tr>
+                            <tr role="row">
+                                <th colspan="2" style="background: #FFFFFF;" rowspan="1">&nbsp;
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!--?php  </tbody-->
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/33' onclick="petitionProyectos(33); return false;">Facultad de bellas artes y humanidades
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">159 proyectos
+                                </td>
+
+                                <!-- <td class="sorting_1"><a href= 'http://localhost:8000/api/consultavice/33/Facultad de Bellas Artes y Humanidades/1'>Facultad de bellas artes y humanidades</a></td>
+                                <td width="25%" style="text-align:center;">16</a></td> -->
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/535' onclick="petitionProyectos(535); return false;">Facultad de ciencias agrarias y agroindustria
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">16 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/51' onclick="petitionProyectos(51); return false;">Facultad de ciencias ambientales
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">320 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/42' onclick="petitionProyectos(42); return false;">Facultad de ciencias básicas
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">214 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/38' onclick="petitionProyectos(38); return false;">Facultad de ciencias de la educación
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">287 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/28' onclick="petitionProyectos(28); return false;">Facultad de ciencias de la salud
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">292 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/21' onclick="petitionProyectos(21); return false;">Facultad de ciencias empresariales
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">106 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/19' onclick="petitionProyectos(19); return false;">Facultad de ingeniería mecánica
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">120 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/23' onclick="petitionProyectos(23); return false;">Facultad de ingenierías eléctrica, electrónica, física y ciencias de la computación
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">	455 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/46' onclick="petitionProyectos(46); return false;">Facultad de tecnología
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">263 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/11' onclick="petitionProyectos(11); return false;">Vicerrectoría académica
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">6 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/57' onclick="petitionProyectos(57); return false;">Vicerrectoría Administrativa
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">2 proyectos
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultaviceproject/75' onclick="petitionProyectos(75); return false;">Vicerrectoría de investigaciones innovación y extensión
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">18 proyectos
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="tabla-proyectos" class="dataTables_wrapper no-footer d-none">
+            <table id="tabla-grupos-facultades" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                <thead id="tproyecto">
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-facultades" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Grupos: activate to sort column descending" style="width: 632px;">Nombre Proyecto
+                        </th>
+                        <th style="text-align: center; width: 197px;" class="sorting" tabindex="0" aria-controls="tabla-reconocido" rowspan="1" colspan="1" aria-label="Minciencias: activate to sort column ascending">Codigo CIE
+                        </th>
+                        <th style="text-align: center; width: 197px;" class="sorting" tabindex="0" aria-controls="tabla-Categoria" rowspan="1" colspan="1" aria-label="Categoría: activate to sort column ascending">Estado
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+
+        <div id="tabla-proyectosGru" class="dataTables_wrapper no-footer d-none">
+            <table id="tabla-grupos-colciencias" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                <thead id="tproyectosGru">
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-colciencias" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Grupos: activate to sort column descending">Proyectos
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <div id="tabla-gruposGru" class="dataTables_wrapper no-footer d-none">
+            <table id="tabla-grupos-colciencias" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                <thead id="tgrupoGru">
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-colciencias" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Grupos: activate to sort column descending">Grupos de Investigación
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+    </main>
+</body>
+</html>
+<script>
+    //Peticion para facultades
+    const petitionProyectos = (idproyecto) => {
+        let endPointPro = `http://localhost:8000/api/consultaviceproject/${idproyecto}`
+        // console.log(endPoint)
+        fetch(endPointPro)
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            drawPagePro(data);
+        })
+        .catch(error => console.log('error', error));
+    }
+    // petitionsemilleros();
+
+// Dibujar los proyectos asociados a cada facultad
+    const drawPagePro = (data) => {
+        // console.log(data['data']);
+        const datos = data;
+        const element = document.querySelector('.Contenenedor-principal');
+        element.innerHTML = '';
+
+        const consultaAuxPro = document.getElementById('tabla-proyectos');
+        consultaAuxPro.classList.remove("d-none");
+
+        let drawPro = document.getElementById('tproyecto');
+
+            datos.forEach(itemPro => {
+                const {nombreproyecto, codigocie, estado, idproyecto} = itemPro;
+                        drawPro.innerHTML += `
+                        <tr>
+                            <td style="background: #FFFFFF;">&nbsp;
+                                <a href='http://localhost:8000/api/consultadetallesproyecto/detallesproyecto/${idproyecto}' onclick="detallesproyectos(${idproyecto}); return false;">${nombreproyecto}</a>
+                            </td>
+                            <td style="background: #FFFFFF;">&nbsp;
+                                ${codigocie}
+                            </td>
+                            <td style="background: #FFFFFF;">&nbsp;
+                                ${estado}
+                            </td>
+                        </tr>
+                        `;
+
+            });
+    }
+
+// DATOS DETALLES DE LOS PROYECTOS
+
+    const detallesproyectos = (idproyecto) => {
+        let endPointProyecto = `http://localhost:8000/api/consultadetallesproyecto/detallesproyecto/${idproyecto}`
+        fetch(endPointProyecto)
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            drawPageProyecto(data);
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    const drawPageProyecto = (data) => {
+
+        const infoProyectos = data['infoProyectos'];  //NOMBREPROYECTO, CODIGOCIE, OBJETIVOS, RESUMEN, NOMBREGRUPO, IDGRUPO, PROPONENTE, TIPOCONVOCATORIA,TIPOPROYECTO, ESTADO, FECHAINICIO, FECHAFINALIZACION, IDGRUPO
+        const integrantesProyectos = data['integrantesProyectos']; // INTEGRANTES, TIPOPARTICIPACION, HORASINTEGRANTE
+        const InvestigadorProyectos = data['InvestigadorProyectos']; //INVESTIGADORESPRINCIPALES, HORASDEDICACIONPRINCIPAL
+        const ProductosProyectos = data['ProductosProyectos'];
+
+        console.log(ProductosProyectos);
+
+
+        const consultaAuxGru = document.getElementById('tabla-proyectos');
+        consultaAuxGru.classList.add("d-none");
+
+        const auxDraw = document.getElementById('tabla-proyectosGru');
+        auxDraw.classList.remove("d-none");
+
+        let drawProjectsGru = document.getElementById('tproyectosGru');
+
+//Nombre del proyecto
+        const {nombreproyecto} = infoProyectos[0];
+        drawProjectsGru.innerHTML +=`
+        <tr>
+            <td>
+                <p style="background: #540622; color: white">
+                ${nombreproyecto}
+                </p>
+            </td>
+        </tr>
+        `;
+//HEAD PARA INVESTIGADOR(ES) PRINCIPAL(ES)
+        drawProjectsGru.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">INVESTIGADOR(ES) PRINCIPAL(ES):</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">NOMBRE</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">DEDICACIÓN</h4>
+                </td>
+            </tr>
+        `;
+//FOR PARA INVESTIGADOR(ES) PRINCIPAL(ES)
+        InvestigadorProyectos.forEach(iteminves => {
+            const {investigadoresprincipales, horasdedicacionprincipal} = iteminves;
+                drawProjectsGru.innerHTML += `
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${investigadoresprincipales}
+                        </td>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${horasdedicacionprincipal}
+                        </td>
+                    </tr>
+                `;
+        });
+
+//Codigo CIE
+        const {codigocie} = infoProyectos[0];
+            drawProjectsGru.innerHTML +=`
+                <tr>
+                    <td>
+                        <h4 style="background: #e6e7e9; color: black;font-weight: bold;">CÓDIGO CIE</h4>
+                            <p style="background: #FFFFFF;" >&nbsp;
+                                ${codigocie}
+                            </p>
+                    </td>
+                </tr>
+            `;
+
+//NOMBRE PROYECTO
+        const {idgrupo, nombregrupo, proponente} = infoProyectos[0];
+        let proponenteAux, nombregrupoAux;
+        if (proponente == 'Proponente'){
+            proponenteAux = "Si";
+            nombregrupoAux = nombregrupo;
+        }
+        else if (proponente == null){
+            proponenteAux = "No";
+            nombregrupoAux = "";
+        }
+
+        // console.log(proponenteAux);
+            drawProjectsGru.innerHTML +=`
+                <tr>
+                    <td>
+                        <h4 style="background: #e6e7e9; color: black;font-weight: bold;">NOMBRE DEL GRUPO DE INVESTIGACIÓN</h4>
+                            <p style="background: #FFFFFF;" >&nbsp;
+                                <a href='http://localhost:8000/api/consultaintegrantes/${idgrupo}/grupo' onclick="petitionGruposGru(${idgrupo}); return false;">${nombregrupoAux}</a>
+                            </p>
+                    </td>
+                    <td>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">PROPONENTE</h4>
+                            <p style="background: #FFFFFF;" >&nbsp;
+                                ${proponenteAux}
+                            </p>
+                    </td>
+                </tr>
+        `;
+
+
+//HEAD PARA INTEGRANTES, NOMBRE Y ROL
+        drawProjectsGru.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">NOMBRE</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">PARTICIPACION</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">DEDICACION</h4>
+                </td>
+            </tr>
+        `;
+
+//FOR PARA DATOS INTEGRANTES
+        integrantesProyectos.forEach(item => {
+            const {integrantes, tipoparticipacion, horasintegrante} = item;
+            drawProjectsGru.innerHTML += `
+                <tr>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${integrantes}
+                    </td>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${tipoparticipacion}
+                    </td>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${horasintegrante}
+                    </td>
+                </tr>
+            `;
+        });
+
+
+
+
+//DATOS PROYECTOS
+        const {tipoconvocatoria, tipoproyecto, objetivos, resumen, estado, fechainicio, fechafinalizacion, idproyecto} = infoProyectos[0];
+
+        // if(fechafinprorroga == null){
+        //     const fechaProrrogaAux = '';
+            drawProjectsGru.innerHTML +=`
+                <tr>
+                    <td>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">TIPO DE CONVOCATORIA</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${tipoconvocatoria}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">TIPO DE PROYECTO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${tipoproyecto}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">OBJETIVO(S)</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${objetivos}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">RESUMEN</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${resumen}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">ESTADO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${estado}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">FECHA DE INICIO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${fechainicio}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">FECHA DE FINALIZACION</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${fechafinalizacion}
+                            </p>
+                    </td>
+                </tr>
+            `;
+
+
+//HEAD PARA PRODUCTOS
+        drawProjectsGru.innerHTML +=`
+            <tr>
+                <tr>
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">PRODUCTO</h4>
+                </tr>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">NOMBRE</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">CATEGORIA</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">ENLACE</h4>
+                </td>
+            </tr>
+        `;
+//DATOS PRODUCTOS
+        ProductosProyectos.forEach(item => {
+            const {productos, categoriaproductos, urlproducto} = item;
+            console.log(item);
+            let productosAux, categoriaproductosAux, urlproductoAux
+                (productos == null ? productosAux = '' : productosAux = productos);
+                (categoriaproductos == null ? categoriaproductosAux = '' : categoriaproductosAux = categoriaproductos);
+                (urlproducto == null ? urlproductoAux = '' : urlproductoAux = urlproducto);
+                drawProjectsGru.innerHTML += `
+
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${productosAux}
+                        </td>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${categoriaproductosAux}
+                        </td>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${urlproductoAux}
+                        </td>
+                    </tr>
+                `;
+        })
+    }
+
+
+
+
+//Peticion para cada grupo
+const petitionGruposGru = (idgru) => {
+        let endPointGru = `http://localhost:8000/api/consultaintegrantes/${idgru}/grupo`;
+        fetch(endPointGru)
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            drawPageGru(data);
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    const drawPageGru = (data) => {
+
+        const datosGru = data['infogrupos']; // idgrupo, nombreproyecto, nombregrupo, codigogrupo, categoria, utrlgrupo, urlcolciencias, objetivo, responsable, emailgrupo
+        const datosInte = data['integrantes']; // idgrupo, nombre, estamento, rol
+        const datosLinea = data['lineaInvestigacion'];// idgrupo, lineainvestigacion
+        const datosNombPro = data['nombrePrograma'];// idgrupo, nombreprograma
+        const datosRed = data['nombreRed']; // idgrupo, nombrered, coberturared
+
+        // console.log("datosgru: ", datosGru);
+        // console.log("datosInte: ", datosInte);
+        // console.log("datosLinea: ", datosLinea);
+        // console.log(typeof datosNombPro)
+        // console.log("datosNombPro: ", datosNombPro);
+        // console.log("datosRed: ", datosRed);
+
+        // const element = document.querySelector('.Contenenedor-principal');
+        // element.innerHTML = '';
+
+        const consultaAuxGru = document.getElementById('tabla-proyectos');
+        consultaAuxGru.classList.add("d-none");
+
+        let consultaAuxCol = document.getElementById('tabla-proyectosGru');
+        consultaAuxCol.classList.add("d-none");
+
+        const auxDraw = document.getElementById('tabla-gruposGru');
+        auxDraw.classList.remove("d-none");
+
+
+        let drawgroupsGru = document.getElementById('tgrupoGru');
+
+
+//DATOS GRUPOS EXCEPTO NOMBREPROYECTO
+        const {nombregrupo, codigogrupo, categoria, urlgrupo, urlcolciencias, objetivo, responsable, emailgrupo} = datosGru[0];
+            if(categoria == null || urlgrupo == null){
+                let categoriaValorAux, urlGrupoAux, urlcolcienciasAux
+                (categoria == null ? categoriaValorAux = '' : categoriaValorAux = categoria);
+                (urlgrupo == null ? urlGrupoAux = '' : urlGrupoAux = urlgrupo);
+                (urlcolciencias == null ? urlcolcienciasAux = '' : urlcolcienciasAux = urlcolciencias);
+                drawgroupsGru.innerHTML += `
+                <p style="background: #540622; color: white">&nbsp;
+                    ${nombregrupo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">CÓDIGO</h4>
+                    <p style="background: #FFFFFF;" >&nbsp;
+                        ${codigogrupo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">CATEGORÍA</h4>
+                    <p style="background: #FFFFFF;" >&nbsp;
+                        ${categoriaValorAux}
+                        </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">SITIO WEB</h4>
+                    <p style="background: #FFFFFF;" >&nbsp;
+                        ${urlGrupoAux}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">SITIO WEB COLCIENCIAS</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${urlcolcienciasAux}
+                        </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">OBJETIVO(S)</h4>
+                        <p style="background: #FFFFFF;">&nbsp;
+                            ${objetivo}
+                            </p>
+                    <tr>
+                        <td>
+                            <h4 style="background: #e6e7e9; color: black; font-weight: bold;">DIRECTOR(A)</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${responsable}
+                            </p>
+                        </td>
+                        <td>
+                            <h4 style="background: #e6e7e9; color: black; font-weight: bold;">CORREO ELECTRÓNICO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${emailgrupo}
+                            </p>
+                        </td>
+                    </tr>
+                `;
+            }else{
+                drawgroupsGru.innerHTML += `
+                    <p style="background: #540622; color: white">&nbsp;
+                        ${nombregrupo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">CÓDIGO</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${codigogrupo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">CATEGORÍA</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${categoria}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">SITIO WEB</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        <a href='https://blog.utp.edu.co/700repart/'> ${urlgrupo} </a>
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">SITIO WEB COLCIENCIAS</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        <a href='https://scienti.minciencias.gov.co/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000001090'> ${urlcolciencias} </a>
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">OBJETIVO(S)</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${objetivo}
+                    </p>
+                    <tr>
+                        <td colspan="2">
+                            <h4 style="background: #e6e7e9; color: black; font-weight: bold;">DIRECTOR(A)</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${responsable}
+                            </p>
+                        </td>
+                        <td colspan="2">
+                            <h4 style="background: #e6e7e9; color: black; font-weight: bold;">CORREO ELECTRÓNICO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${emailgrupo}
+                            </p>
+                        </td>
+                    </tr>
+                `;
+            }
+
+
+//HEAD PARA INTEGRANTES, NOMBRE Y ROL
+        drawgroupsGru.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">INTEGRANTE(S)</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">NOMBRE</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">ROL</h4>
+                </td>
+            </tr>
+        `;
+//FOR PARA DATOS INTEGRANTES
+        datosInte.forEach(item => {
+        //console.log(itemGru);
+        const {nombre, rol} = item;
+            drawgroupsGru.innerHTML += `
+                <tr>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${nombre}
+                    </td>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${rol}
+                    </td>
+                </tr>
+            `;
+        });
+
+
+//HEAD PARA LINEAS DE INVESTIGACION
+        drawgroupsGru.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">LÍNEAS DE INVESTIGACIÓN</h4>
+                </td>
+            </tr>
+            `;
+
+// DATOS LINEAS DE INVESTIGACION
+
+        datosLinea.forEach(item => {
+            const {lineainvestigacion} = item;
+            drawgroupsGru.innerHTML += `
+                <tr>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${lineainvestigacion}
+                    </td>
+                </tr>
+            `;
+        });
+
+
+
+//HEAD PARA REDES DE LA INVESTIGACION
+drawgroupsGru.innerHTML +=`
+            <tr>
+                <td>
+                    <h3 style="background: #e6e7e9; color: black; font-weight: bold;">REDES DE INVESTIGACIÓN</h3>
+                </td>
+            </tr>
+            `;
+
+// DATOS DE LAS REDES DE INVESTIGACION
+
+        const{nombrered, coberturared} = datosRed[0];
+            if(nombrered == null){
+                let nombreRedtoAux = '';
+                let coberturaRedAux = '';
+                drawgroupsGru.innerHTML += `
+                    <tr>
+                        <td>
+                            <h4 style="background: #e6e7e9; color: black">NOMBRE</h4>
+                        </td>
+
+                        <td style="background: #FFFFFF;">
+                            ${nombreRedtoAux}
+                        </td>
+
+                        <td>
+                            <h4 style="background: #e6e7e9; color: black">COBERTURA</h4>
+                        </td>
+
+                        <td style="background: #FFFFFF;">
+                            ${coberturaRedAux}
+                        </td>
+                    </tr>
+                `;
+            }else{
+                drawgroupsGru.innerHTML += `
+                    <tr>
+                            <td>
+                                <h4 style="background: #e6e7e9; color: black">NOMBRE</h4>
+                            </td>
+
+                            <td style="background: #FFFFFF;">
+                                ${nombrered}
+                            </td>
+
+                            <td>
+                                <h4 style="background: #e6e7e9; color: black">COBERTURA</h4>
+                            </td>
+
+                            <td style="background: #FFFFFF;">
+                                ${coberturared}
+                            </td>
+                    </tr>
+                `;
+            }
+
+
+//HEAD PARA GRUPO SOPORTE DE PROGRAMAS DE POSGRADO
+        drawgroupsGru.innerHTML +=`
+            <tr>
+                <td>
+                    <h3 style="background: #e6e7e9; color: black; font-weight: bold;">GRUPO SOPORTE DE PROGRAMAS DE POSGRADO</h3>
+                </td>
+            </tr>
+            `;
+
+// Datos DE GRUPO SOPORTE DE PROGRAMAS DE POSGRADO
+
+
+        const{nombreprograma} = datosNombPro[0];
+            if(nombreprograma == null){
+                let nombreProgramaAux = '';
+                drawgroupsGru.innerHTML += `
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${nombreProgramaAux}
+                        </td>
+                    </tr>
+                `;
+            }else{
+                drawgroupsGru.innerHTML += `
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${nombreprograma}
+                        </td>
+                    </tr>
+                `;
+            }
+
+
+//HEAD PARA NOMBREPROYECTO
+        drawgroupsGru.innerHTML +=`
+                    <tr>
+                        <td>
+                            <h3 style="background: #e6e7e9; color: black; font-weight: bold;">PROYECTOS A CARGO DEL GRUPO</h3>
+                        </td>
+                    </tr>
+                    `;
+
+//FOR PARA TRAER NOMBREPROYECTO
+        datosGru.forEach(itemGru => {
+
+            //console.log(itemGru);
+            const {nombreproyecto} = itemGru;
+                if(nombreproyecto == null){
+                let nombreproyectoAux = '';
+                drawgroupsGru.innerHTML += `
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${nombreproyectoAux}
+                        </td>
+                    </tr>
+                    `;
+                }else{
+                    drawgroupsGru.innerHTML += `
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            <a href='http://localhost:8000/api/consultaintegrantes/${nombreproyecto}/grupo'>${nombreproyecto}</a>
+                        </td>
+                    </tr>
+                    `;
+                }
+        });
+    }
+
+
+
+</script>
+

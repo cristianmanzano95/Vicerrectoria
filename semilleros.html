@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS ONLY -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link type="text/css" href="/css/style.css" rel="stylesheet">
+    <link type="text/css" href="/css/cabecera.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link type="text/css" href="resources/css/app.css" rel="stylesheet">
+    <link type="text/css" href="resources/js/app.js" rel="stylesheet">
+    <title>Vicerrectoria</title>
+</head>
+<body>
+    <main class="row">
+        <div class="col-lg-3">
+            <ul class="menu_lateral">
+                <li class="menu-lateral-item accordion-item">
+                    <a target="_self" href="#" class="accordion-header accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-4">Información General
+                    </a>
+                    <ul class="accordion-collapse collapse" id="accordion-4">
+                        <li class="menu-lateral-item accordion-body">
+                            <a href="http://localhost:3000/apivicerrectoria/grupos.html">Grupos de Investigación
+                            </a>
+                        </li>
+                        <li class="menu-lateral-item accordion-body">
+                            <a href="http://localhost:3000/apivicerrectoria/semilleros.html">Semilleros de Investigación
+                            </a>
+                        </li>
+                        <li class="menu-lateral-item accordion-body">
+                            <a href="http://localhost:3000/apivicerrectoria/proyectos.html">Proyectos de Investigación
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class=" Contenenedor-principal col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="articulo">
+                <div class="titulo">
+                    <h2>Grupos</h2>
+                </div>
+                <!--Vista Principal de los Grupos 'investigaciones/grupos'-->
+                <br>
+                    <div id="tabla-grupos-busqueda_wrapper" class="dataTables_wrapper no-footer">
+                        <table id="tabla-grupos-busqueda" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                            <thead>
+                                <tr role="row">
+                                    <th rowspan="1" colspan="1">Búsqueda
+                                    </th>
+                                </tr>
+                                <tr role="row">
+                                    <th style="background: rgb(255, 255, 255); width: 849px;" class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-busqueda" rowspan="1" colspan="1" aria-sort="ascending" aria-label="&amp;nbsp;: activate to sort column descending">&nbsp;
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr role="row" class="odd">
+                                    <td colspan="2" class="sorting_1">
+                                        <span class="help-block">Este filtro le permitirá realizar la búsqueda por Nombre o Director, objetivo o lineas de un Grupo de Investigación
+                                        </span>
+                                        <form action="" id="form-gs">
+                                            <div class="row">
+                                                <div class="col-lg-10">
+                                                    <select id="buscar-gs" class="buscar-gs selectized" tabindex="-1" style="display: none;">
+                                                        <option value="" selected="selected">
+                                                        </option>
+                                                    </select>
+                                                        <div class="selectize-control buscar-gs single">
+                                                            <div class="selectize-input items not-full has-options">
+                                                                <input type="text" autocomplete="off" tabindex="" id="buscar-gs-selectized" placeholder="Digite su criterio de busqueda" style="width: 189px;">
+                                                            </div>
+                                                                <div class="selectize-dropdown single buscar-gs" style="display: none;">
+                                                                    <div class="selectize-dropdown-content">
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <button type="button" class="btn btn-default btn-primary" id="btn-buscar-gs">Buscar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                <br>
+
+                <br>
+
+                <div id="tabla-grupos-facultades_wrapper" class="dataTables_wrapper no-footer">
+                    <table id="tabla-grupos-facultades" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-facultades" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Facultades: activate to sort column descending" style="width: 632px;">Facultades
+                                </th>
+                                <th style="text-align: center; width: 197px;" class="sorting" tabindex="0" aria-controls="tabla-grupos-facultades" rowspan="1" colspan="1" aria-label="Número de Grupos: activate to sort column ascending">Número de Grupos
+                                </th>
+                            </tr>
+                            <tr role="row">
+                                <th colspan="2" style="background: #FFFFFF;" rowspan="1">&nbsp;
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!--?php  </tbody-->
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/33/Facultad de Bellas Artes y Humanidades/2' onclick="petitionSemilleros(33, 'Facultad de Bellas Artes y Humanidades', 2); return false;">Facultad de bellas artes y humanidades
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">14
+                                </td>
+
+                                <!-- <td class="sorting_1"><a href= 'http://localhost:8000/api/consultavice/33/Facultad de Bellas Artes y Humanidades/1'>Facultad de bellas artes y humanidades</a></td>
+                                <td width="25%" style="text-align:center;">16</a></td> -->
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/535/Facultad de Ciencias Agrarias y Agroindustria/2' onclick="petitionSemilleros(535, 'Facultad de Ciencias Agrarias y Agroindustria', 2); return false;">Facultad de ciencias agrarias y agroindustria
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">5
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/51/Facultad de Ciencias Ambientales/2' onclick="petitionSemilleros(51, 'Facultad de Ciencias Ambientales', 2); return false;">Facultad de ciencias ambientales
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">14
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/42/Facultad de Ciencias Básicas/2' onclick="petitionSemilleros(42, 'Facultad de Ciencias Básicas', 2); return false;">Facultad de ciencias básicas
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">6
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/38/Facultad de Ciencias de la Educación/2' onclick="petitionSemilleros(38, 'Facultad de Ciencias de la Educación', 2); return false;">Facultad de ciencias de la educación
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">13
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/28/Facultad de Ciencias de la Salud/2' onclick="petitionSemilleros(28, 'Facultad de Ciencias de la Salud', 2); return false;">Facultad de ciencias de la salud
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">32
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/21/Facultad de Ciencias Empresariales/2' onclick="petitionSemilleros(21, 'Facultad de Ciencias Empresariales', 2); return false;">Facultad de ciencias empresariales
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">2
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/19/Facultad de Ingeniería Mecánica/2' onclick="petitionSemilleros(19, 'Facultad de Ingeniería Mecánica', 2); return false;">Facultad de ingeniería mecánica
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">3
+                                </td>
+                            </tr>
+                            <tr role="row" class="odd">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/23/Facultad de Ingenierías Eléctrica, Electrónica, Física y Ciencias de la Computación/2' onclick="petitionSemilleros(23, 'Facultad de Ingenierías Eléctrica, Electrónica, Física y Ciencias de la Computación', 2); return false;">Facultad de ingenierías eléctrica, electrónica, física y ciencias de la computación
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">16
+                                </td>
+                            </tr>
+                            <tr role="row" class="even">
+                                <td class="sorting_1">
+                                    <a href='http://localhost:8000/api/consultavice/46/Facultad de Tecnología/2' onclick="petitionSemilleros(46, 'Facultad de Tecnología', 2); return false;">Facultad de tecnología
+                                    </a>
+                                </td>
+                                <td width="25%" style="text-align:center;">15
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+<!-- Tabla principal de los semilleros -->
+
+        <div id="tabla-semilleros" class="dataTables_wrapper no-footer d-none">
+            <table id="tabla-grupos-facultades" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                <thead id="tsemillero">
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-facultades" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Grupos: activate to sort column descending" style="width: 632px;">Semilleros
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+<!-- Tabla principal de los semilleros -->
+
+<!-- ------------------------------------------------- -->
+
+<!-- Tabla de los semilleros de cada facultad -->
+
+        <div id="tabla-semillerosGru" class="dataTables_wrapper no-footer d-none">
+            <table id="tabla-grupos-colciencias" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                <thead id="tsemilleroGru">
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-colciencias" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Grupos: activate to sort column descending">Semilleros de Investigación
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+<!-- Tabla de los semilleros de cada facultad -->
+
+<!-- ------------------------------------------------- -->
+
+<!-- Tabla de Semilleros al venir desde la vista de detalles de grupos-->
+
+        <div id="tabla-semillerosGru2" class="dataTables_wrapper no-footer d-none">
+            <table id="tabla-grupos-colciencias" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                <thead id="tsemilleroGru2">
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-colciencias" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Grupos: activate to sort column descending">Semilleros de Investigación
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+<!-- Tabla de Semilleros al venir desde la vista de detalles de grupos-->
+
+<!-- ------------------------------------------------- -->
+
+<!-- Tabla de proyectos asociados a los Semilleros -->
+
+        <div id="tabla-proyectosSemi" class="dataTables_wrapper no-footer d-none">
+            <table id="tabla-grupos-colciencias" align="left" border="0" cellpadding="1" cellspacing="1" class="compact hover row-border table-striped dataTable no-footer" style="width: 100%;" role="grid">
+                <thead id="tproyectosSemi">
+                    <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="tabla-grupos-colciencias" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Grupos: activate to sort column descending">Proyectos
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+<!-- Tabla de proyectos asociados a los Semilleros -->
+
+    </main>
+</body>
+</html>
+
+<script>
+//Peticion para facultades
+    const petitionSemilleros = (codigofacul, nomfacultad, idtipo) => {
+        let endPointSem = `http://localhost:8000/api/consultavice/${codigofacul}/${nomfacultad}/${idtipo}`
+        // console.log(endPoint)
+        fetch(endPointSem)
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            drawPageSem(data);
+        })
+        .catch(error => console.log('error', error));
+    }
+
+// Dibujar Semilleros asociados a cada facultad
+    const drawPageSem = (data) => {
+        // console.log(data['data']);
+        const datos = data['data'];
+        const element = document.querySelector('.Contenenedor-principal');
+        element.innerHTML = '';
+
+        const consultaAuxSem = document.getElementById('tabla-semilleros');
+        consultaAuxSem.classList.remove("d-none");
+
+        let drawSem = document.getElementById('tsemillero');
+
+            datos.forEach(itemSem => {
+                const {nombregrupo, idgrupo} = itemSem;
+                        drawSem.innerHTML += `
+                        <tr>
+                            <a href='http://localhost:8000/api/consultaintegrantesSemi/${idgrupo}/semillero' onclick="petitionSemillerosGru(${idgrupo}); return false;">${nombregrupo}</a>
+                        </tr>
+                        `;
+            });
+    }
+
+//Peticion para cada semillero
+    const petitionSemillerosGru = (idsemillero) => {
+        let endPointSemillero = `http://localhost:8000/api/consultaintegrantesSemi/${idsemillero}/semillero`;
+        // console.log("Esta entrando");
+        fetch(endPointSemillero)
+        .then(response => response.json())
+        .then(data => {
+            drawPageSemi(data);
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    const drawPageSemi = (data) => {
+
+        // console.log("Entre");
+
+
+        const infoSemilleros = data['infoSemilleros']; // idgrupo, nombreproyecto, nombregrupo, codigogrupo, utrlgrupo, urlcolciencias, objetivo, responsable, emailgrupo
+        const integrantesSemilleros = data['integrantesSemilleros']; // idgrupo, nombre, estamento, rol
+        const lineaInvestigacionSemilleros = data['lineaInvestigacionSemilleros'];// idgrupo, lineainvestigacion
+
+        // console.log("Data: ",data);
+
+        const consultaAuxSemi = document.getElementById('tabla-semilleros');
+        consultaAuxSemi.classList.add("d-none");
+
+        const consultaAuxSemilleros = document.getElementById('tabla-proyectosSemi');
+        consultaAuxSemilleros.classList.add("d-none");
+
+        const auxDrawSemi = document.getElementById('tabla-semillerosGru');
+        auxDrawSemi.classList.remove("d-none");
+
+
+        let drawgroupsSemi= document.getElementById('tsemilleroGru');
+//DATOS SEMILLEROS EXCEPTO NOMBREPROYECTO
+        const {nombregrupo, codigogrupo, urlgrupo, urlcolciencias, objetivo, responsable, emailgrupo} = infoSemilleros[0];
+        // console.log("Datos semilleros: ",infoSemilleros[0]);
+            // if (urlgrupo == null || urlcolciencias == null){
+                let urlgrupoAuxiliar, urlcolcienciasAuxiliar
+                (urlgrupo == null ? urlgrupoAuxiliar = '' : urlgrupoAuxiliar = urlgrupo);
+                (urlcolciencias == null ? urlcolcienciasAuxiliar = '' : urlcolcienciasAuxiliar = urlcolciencias);
+                drawgroupsSemi.innerHTML += `
+                <tr>
+                    <p style="background: #540622; color: white">&nbsp;
+                        ${nombregrupo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">CÓDIGO</h4>
+                    <p style="background: #FFFFFF;" >&nbsp;
+                        ${codigogrupo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">SITIO WEB</h4>
+                    <p style="background: #FFFFFF;" >&nbsp;
+                        <a href='${urlgrupoAuxiliar} '> ${urlgrupoAuxiliar} </a>
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">SITIO WEB COLCIENCIAS</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        <a href='${urlcolcienciasAuxiliar} '> ${urlcolcienciasAuxiliar} </a>
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">OBJETIVO(S)</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${objetivo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">TUTOR(A)</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${responsable}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">CORREO ELECTRÓNICO</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${emailgrupo}
+                    </p>
+            </tr>
+                `;
+
+//HEAD PARA INTEGRANTES, NOMBRE Y ROL
+        drawgroupsSemi.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">INTEGRANTE(S)</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">NOMBRE</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">ROL</h4>
+                </td>
+            </tr>
+        `;
+//FOR PARA DATOS INTEGRANTES
+        integrantesSemilleros.forEach(item => {
+        //console.log(itemGru);
+            const {nombre, rol} = item;
+            // console.log("Integrantes:", item)
+                    drawgroupsSemi.innerHTML += `
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${nombre}
+                        </td>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${rol}
+                        </td>
+                    </tr>
+                `;
+        });
+
+//HEAD PARA LINEAS DE INVESTIGACION
+        drawgroupsSemi.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">LÍNEAS DE INVESTIGACIÓN</h4>
+                </td>
+            </tr>
+            `;
+// DATOS LINEAS DE INVESTIGACION
+
+        lineaInvestigacionSemilleros.forEach(item => {
+            const {lineainvestigacion} = item;
+            // console.log("linedas de investigacion: ", item);
+            drawgroupsSemi.innerHTML += `
+                <tr>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${lineainvestigacion}
+                    </td>
+                </tr>
+            `;
+        });
+
+//HEAD PARA NOMBREPROYECTO
+        drawgroupsSemi.innerHTML +=`
+            <tr>
+                <td>
+                    <h3 style="background: #e6e7e9; color: black; font-weight: bold;">PROYECTOS A CARGO DEL SEMILLERO</h3>
+                </td>
+            </tr>
+        `;
+//FOR PARA TRAER NOMBREPROYECTO
+        infoSemilleros.forEach(itemSemi => {
+            const {nombreproyecto, idproyecto} = itemSemi;
+            // console.log("Nombre del Proyecto: ",itemSemi);
+                if(nombreproyecto == null){
+                let nombreproyectoAuxiliar = '';
+                    drawgroupsSemi.innerHTML += `
+                        <tr>
+                            <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                                ${nombreproyectoAuxiliar}
+                            </td>
+                        </tr>
+                        `;
+                }else{
+                    drawgroupsSemi.innerHTML += `
+                        <tr>
+                            <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                                <a href='http://localhost:8000/api/consultadetallesproyecto/detallesproyecto/${idproyecto}' onclick="detallesproyectos(${idproyecto}); return false;">${nombreproyecto}</a>
+                            </td>
+                        </tr>
+                    `;
+                }
+        });
+    }
+
+
+// DATOS DETALLES DE LOS PROYECTOS
+
+const detallesproyectos = (idproyecto) => {
+        let endPointProyecto = `http://localhost:8000/api/consultadetallesproyecto/detallesproyecto/${idproyecto}`
+        fetch(endPointProyecto)
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            drawPageProyecto(data);
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    const drawPageProyecto = (data) => {
+
+        const infoProyectos = data['infoProyectos'];  //NOMBREPROYECTO, CODIGOCIE, OBJETIVOS, RESUMEN, NOMBREGRUPO, IDGRUPO, PROPONENTE, TIPOCONVOCATORIA,TIPOPROYECTO, ESTADO, FECHAINICIO, FECHAFINALIZACION, IDGRUPO
+        const integrantesProyectos = data['integrantesProyectos']; // INTEGRANTES, TIPOPARTICIPACION, HORASINTEGRANTE
+        const InvestigadorProyectos = data['InvestigadorProyectos']; //INVESTIGADORESPRINCIPALES, HORASDEDICACIONPRINCIPAL
+        const ProductosProyectos = data['ProductosProyectos'];
+
+        // console.log(ProductosProyectos);
+
+
+        const consultaAuxGru = document.getElementById('tabla-semilleros');
+        consultaAuxGru.classList.add("d-none");
+
+        const consultaAuxSemi = document.getElementById('tabla-semillerosGru');
+        consultaAuxSemi.classList.add("d-none");
+
+        const consultaAuxSemi2 = document.getElementById('tabla-semillerosGru2');
+        consultaAuxSemi2.classList.add("d-none");
+
+        const auxDraw = document.getElementById('tabla-proyectosSemi');
+        auxDraw.classList.remove("d-none");
+
+
+
+        let drawProjectsGru = document.getElementById('tproyectosSemi');
+
+
+//Nombre del proyecto
+        const {nombreproyecto} = infoProyectos[0];
+        drawProjectsGru.innerHTML +=`
+        <tr>
+            <td>
+                <p style="background: #540622; color: white">
+                ${nombreproyecto}
+                </p>
+            </td>
+        </tr>
+        `;
+//HEAD PARA INVESTIGADOR(ES) PRINCIPAL(ES)
+        drawProjectsGru.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">INVESTIGADOR(ES) PRINCIPAL(ES):</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">NOMBRE</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">DEDICACIÓN</h4>
+                </td>
+            </tr>
+        `;
+//FOR PARA INVESTIGADOR(ES) PRINCIPAL(ES)
+        InvestigadorProyectos.forEach(iteminves => {
+            const {investigadoresprincipales, horasdedicacionprincipal} = iteminves;
+                drawProjectsGru.innerHTML += `
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${investigadoresprincipales}
+                        </td>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${horasdedicacionprincipal}
+                        </td>
+                    </tr>
+                `;
+        });
+
+//Codigo CIE
+        const {codigocie} = infoProyectos[0];
+            drawProjectsGru.innerHTML +=`
+                <tr>
+                    <td>
+                        <h4 style="background: #e6e7e9; color: black;font-weight: bold;">CÓDIGO CIE</h4>
+                            <p style="background: #FFFFFF;" >&nbsp;
+                                ${codigocie}
+                            </p>
+                    </td>
+                </tr>
+            `;
+
+//NOMBRE PROYECTO
+        const {idgrupo, nombregrupo, proponente} = infoProyectos[0];
+        let proponenteAux, nombregrupoAux;
+        if (proponente == 'Proponente'){
+            proponenteAux = "Si";
+            nombregrupoAux = nombregrupo;
+        }
+        else if (proponente == null){
+            proponenteAux = "No";
+            nombregrupoAux = "";
+        }
+
+        // console.log(proponenteAux);
+            drawProjectsGru.innerHTML +=`
+                <tr>
+                    <td>
+                        <h4 style="background: #e6e7e9; color: black;font-weight: bold;">NOMBRE DEL GRUPO DE INVESTIGACIÓN</h4>
+                            <p style="background: #FFFFFF;" >&nbsp;
+                                <a href='http://localhost:8000/api/consultaintegrantes/${idgrupo}/semillero' onclick="petitionSemillerosGru2(${idgrupo}); return false;">${nombregrupoAux}</a>
+                            </p>
+                    </td>
+                    <td>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">PROPONENTE</h4>
+                            <p style="background: #FFFFFF;" >&nbsp;
+                                ${proponenteAux}
+                            </p>
+                    </td>
+                </tr>
+        `;
+
+
+//HEAD PARA INTEGRANTES, NOMBRE Y ROL
+        drawProjectsGru.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">NOMBRE</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">PARTICIPACION</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">DEDICACION</h4>
+                </td>
+            </tr>
+        `;
+
+//FOR PARA DATOS INTEGRANTES
+        integrantesProyectos.forEach(item => {
+            const {integrantes, tipoparticipacion, horasintegrante} = item;
+            drawProjectsGru.innerHTML += `
+                <tr>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${integrantes}
+                    </td>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${tipoparticipacion}
+                    </td>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${horasintegrante}
+                    </td>
+                </tr>
+            `;
+        });
+
+
+
+
+//DATOS PROYECTOS
+        const {tipoconvocatoria, tipoproyecto, objetivos, resumen, estado, fechainicio, fechafinalizacion, idproyecto, fechafinprorroga} = infoProyectos[0];
+        if(fechafinprorroga == null){
+            const fechafinprorrogaAux = '';
+            drawProjectsGru.innerHTML +=`
+                <tr>
+                    <td>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">TIPO DE CONVOCATORIA</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${tipoconvocatoria}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">TIPO DE PROYECTO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${tipoproyecto}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">OBJETIVO(S)</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${objetivos}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">RESUMEN</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${resumen}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">ESTADO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${estado}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">FECHA DE INICIO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${fechainicio}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">FECHA DE FINALIZACION</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${fechafinalizacion}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;" class="d-none">FECHA DE FIN(PRÓRROGA)</h4>
+                            <p style="background: #FFFFFF;">
+                                ${fechafinprorrogaAux}
+                            </p>
+                    </td>
+                </tr>
+            `;
+        }else{
+            let aux = fechafinprorroga.split(" ")
+            let final = aux[0].replaceAll("-","/")
+            drawProjectsGru.innerHTML +=`
+                <tr>
+                    <td>
+                        <h4 style="background: #e6e7e9; color: black;font-weight: bold;">CÓDIGO CIE</h4>
+                            <p style="background: #FFFFFF;" >&nbsp;
+                                ${codigocie}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">NOMBRE DEL GRUPO DE INVESTIGACIÓN</h4>
+                            <p style="background: #FFFFFF;" >&nbsp;
+                                ${nombregrupo}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">PROPONENTE</h4>
+                            <p style="background: #FFFFFF;" >&nbsp;
+                                ${proponente}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">TIPO DE CONVOCATORIA</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${tipoconvocatoria}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">TIPO DE PROYECTO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${tipoproyecto}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">OBJETIVO(S)</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${objetivos}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">RESUMEN</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${resumen}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">ESTADO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${estado}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">FECHA DE INICIO</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${fechainicio}
+                            </p>
+
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">FECHA DE FINALIZACION</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${fechafinalizacion}
+                            </p>
+                        <h4 style="background: #e6e7e9; color: black; font-weight: bold;">FECHA DE FIN(PRÓRROGA)</h4>
+                            <p style="background: #FFFFFF;">&nbsp;
+                                ${final}
+                            </p>
+                    </td>
+                </tr>
+            `;
+        }
+
+//HEAD PARA PRODUCTOS
+        drawProjectsGru.innerHTML +=`
+            <tr>
+                <tr>
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">PRODUCTO</h4>
+                </tr>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">NOMBRE</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">CATEGORIA</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">ENLACE</h4>
+                </td>
+            </tr>
+        `;
+//DATOS PRODUCTOS
+        ProductosProyectos.forEach(item => {
+            const {productos, categoriaproductos, urlproducto} = item;
+            // console.log(item);
+            let productosAux, categoriaproductosAux, urlproductoAux
+                (productos == null ? productosAux = '' : productosAux = productos);
+                (categoriaproductos == null ? categoriaproductosAux = '' : categoriaproductosAux = categoriaproductos);
+                (urlproducto == null ? urlproductoAux = '' : urlproductoAux = urlproducto);
+                drawProjectsGru.innerHTML += `
+
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${productosAux}
+                        </td>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${categoriaproductosAux}
+                        </td>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${urlproductoAux}
+                        </td>
+                    </tr>
+                `;
+        })
+    }
+
+
+//Peticion para cada semillero Cuando venimos desde la vista de detalles de proyecto
+const petitionSemillerosGru2 = (idsemillero) => {
+        let endPointSemillero = `http://localhost:8000/api/consultaintegrantesSemi/${idsemillero}/semillero`;
+        // console.log("Esta entrando");
+        fetch(endPointSemillero)
+        .then(response => response.json())
+        .then(data => {
+            drawPageSemi2(data);
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    const drawPageSemi2 = (data) => {
+
+        // console.log("Entre");
+
+
+        const infoSemilleros = data['infoSemilleros']; // idgrupo, nombreproyecto, nombregrupo, codigogrupo, utrlgrupo, urlcolciencias, objetivo, responsable, emailgrupo
+        const integrantesSemilleros = data['integrantesSemilleros']; // idgrupo, nombre, estamento, rol
+        const lineaInvestigacionSemilleros = data['lineaInvestigacionSemilleros'];// idgrupo, lineainvestigacion
+
+        // console.log("Data: ",data);
+
+        const consultaAuxSemi = document.getElementById('tabla-semilleros');
+        consultaAuxSemi.classList.add("d-none");
+
+        const consultaAuxSemilleros = document.getElementById('tabla-proyectosSemi');
+        consultaAuxSemilleros.classList.add("d-none");
+
+        const auxDrawSemi = document.getElementById('tabla-semillerosGru');
+        auxDrawSemi.classList.add("d-none");
+
+        const auxDrawSemi2 = document.getElementById('tabla-semillerosGru2');
+        auxDrawSemi2.classList.remove("d-none");
+
+
+        let drawgroupsSemi= document.getElementById('tsemilleroGru2');
+
+//DATOS SEMILLEROS EXCEPTO NOMBREPROYECTO Cuando venimos desde la vista de detalles de proyecto
+
+        const {nombregrupo, codigogrupo, urlgrupo, urlcolciencias, objetivo, responsable, emailgrupo} = infoSemilleros[0];
+        // console.log("Datos semilleros: ",infoSemilleros[0]);
+            // if (urlgrupo == null || urlcolciencias == null){
+                let urlgrupoAuxiliar, urlcolcienciasAuxiliar
+                (urlgrupo == null ? urlgrupoAuxiliar = '' : urlgrupoAuxiliar = urlgrupo);
+                (urlcolciencias == null ? urlcolcienciasAuxiliar = '' : urlcolcienciasAuxiliar = urlcolciencias);
+                drawgroupsSemi.innerHTML += `
+                <tr>
+                    <p style="background: #540622; color: white">&nbsp;
+                        ${nombregrupo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black;font-weight: bold;">CÓDIGO</h4>
+                    <p style="background: #FFFFFF;" >&nbsp;
+                        ${codigogrupo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">SITIO WEB</h4>
+                    <p style="background: #FFFFFF;" >&nbsp;
+                        <a href='${urlgrupoAuxiliar} '> ${urlgrupoAuxiliar} </a>
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">SITIO WEB COLCIENCIAS</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        <a href='${urlcolcienciasAuxiliar} '> ${urlcolcienciasAuxiliar} </a>
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">OBJETIVO(S)</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${objetivo}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">TUTOR(A)</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${responsable}
+                    </p>
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">CORREO ELECTRÓNICO</h4>
+                    <p style="background: #FFFFFF;">&nbsp;
+                        ${emailgrupo}
+                    </p>
+            </tr>
+                `;
+
+//HEAD PARA INTEGRANTES, NOMBRE Y ROL Cuando venimos desde la vista de detalles de proyecto
+
+        drawgroupsSemi.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">INTEGRANTE(S)</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">NOMBRE</h4>
+                </td>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">ROL</h4>
+                </td>
+            </tr>
+        `;
+
+//FOR PARA DATOS INTEGRANTES Cuando venimos desde la vista de detalles de proyecto
+
+        integrantesSemilleros.forEach(item => {
+        //console.log(itemGru);
+            const {nombre, rol} = item;
+            // console.log("Integrantes:", item)
+                    drawgroupsSemi.innerHTML += `
+                    <tr>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${nombre}
+                        </td>
+                        <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                            ${rol}
+                        </td>
+                    </tr>
+                `;
+        });
+
+//HEAD PARA LINEAS DE INVESTIGACION Cuando venimos desde la vista de detalles de proyecto
+
+        drawgroupsSemi.innerHTML +=`
+            <tr>
+                <td colspan="2">
+                    <h4 style="background: #e6e7e9; color: black; font-weight: bold;">LÍNEAS DE INVESTIGACIÓN</h4>
+                </td>
+            </tr>
+            `;
+
+// DATOS LINEAS DE INVESTIGACION Cuando venimos desde la vista de detalles de proyecto
+
+        lineaInvestigacionSemilleros.forEach(item => {
+            const {lineainvestigacion} = item;
+            // console.log("linedas de investigacion: ", item);
+            drawgroupsSemi.innerHTML += `
+                <tr>
+                    <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                        ${lineainvestigacion}
+                    </td>
+                </tr>
+            `;
+        });
+
+//HEAD PARA NOMBREPROYECTO Cuando venimos desde la vista de detalles de proyecto
+
+        drawgroupsSemi.innerHTML +=`
+            <tr>
+                <td>
+                    <h3 style="background: #e6e7e9; color: black; font-weight: bold;">PROYECTOS A CARGO DEL SEMILLERO</h3>
+                </td>
+            </tr>
+        `;
+
+//FOR PARA TRAER NOMBREPROYECTO Cuando venimos desde la vista de detalles de proyecto
+
+        infoSemilleros.forEach(itemSemi => {
+            const {nombreproyecto, idproyecto} = itemSemi;
+            // console.log("Nombre del Proyecto: ",itemSemi);
+                if(nombreproyecto == null){
+                let nombreproyectoAuxiliar = '';
+                    drawgroupsSemi.innerHTML += `
+                        <tr>
+                            <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                                ${nombreproyectoAuxiliar}
+                            </td>
+                        </tr>
+                        `;
+                }else{
+                    drawgroupsSemi.innerHTML += `
+                        <tr>
+                            <td style="background: #FFFFFF;" rowspan="1">&nbsp;
+                                <a href='http://localhost:8000/api/consultadetallesproyecto/detallesproyecto/${idproyecto}' onclick="detallesproyectos(${idproyecto}); return false;">${nombreproyecto}</a>
+                            </td>
+                        </tr>
+                    `;
+                }
+        });
+    }
+
+
+
+
+
+
+</script>
